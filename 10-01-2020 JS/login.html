@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>JS</title>
+    <script>
+        function validatePassword(x) {
+            var res = (x.value).match(/^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$*])(?=.*abc)[A-z@$*]{8,}$/);
+            if (res == null || res[0] !== (x.value))
+                x.setCustomValidity('Please enter strong password.');
+            else
+                x.setCustomValidity('');
+        }
+
+        function validateConfirm(x) {
+            if(document.getElementById('password').value !== x.value)
+                x.setCustomValidity('Password not matching');
+            else
+                x.setCustomValidity('');
+        }
+
+        function login() {
+            alert('Name: ' + document.getElementById('name').value + '\nPassword: ' + document.getElementById('password').value);
+        }
+    </script>
+</head>
+<body>
+<form onsubmit="login()">
+    <input id="name" type="name" placeholder="User name" required><br><br>
+    <input id="password" type="password" placeholder="Password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$*])(?=.*abc)[A-z@$*]{8,}$" oninput="validatePassword(this)" required><br><br>
+    <input id="confirm" type="password" placeholder="Confirm password" pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*[@$*])(?=.*abc)[A-z@$*]{8,}$" oninput="validateConfirm(this)" required><br><br>
+    <input id="submit" type="submit" value="SUBMIT"><br>
+</form>
+</body>
+</html>

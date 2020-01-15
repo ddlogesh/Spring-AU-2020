@@ -1,0 +1,19 @@
+<p>logesh works!</p>
+<form [formGroup]="profileForm">
+  <label>FirstName:</label>
+  <input type="text" formControlName="firstName"><br>
+
+  <label>LastName:</label>
+  <input type="text" formControlName="lastName"><br>
+
+  <div>
+    <h3>Address:</h3>
+    <div formGroupName="address">
+      <label>Number:</label>
+      <input type="number" formControlName="num"><br>
+    </div>
+  </div>
+
+  <input type="submit" value="SUBMIT" (click)="submit()"/>
+
+</form>

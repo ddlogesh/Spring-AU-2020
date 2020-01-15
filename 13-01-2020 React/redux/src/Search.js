@@ -12,29 +12,43 @@ class Search extends Component {
                 <input className="fixed" type="text" placeholder="Input station name"
                        onChange={(e) => this.props.modifyData(e.target.value)}/>
 
-                <table>
-                    <tr>
-                        <th>Id</th>
-                        <th>Station</th>
-                        <th>Place</th>
-                        <th>Time</th>
-                    </tr>
-                    {(this.props.data).map(value => (
-                        <tr key={value.id}>
-                            <td>{value.id}</td>
-                            <td>{value.station}</td>
-                            <td>{value.city}, {value.state}, {value.country}</td>
-                            <td>{value.last_update}</td>
+                <div>
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Station</th>
+                            <th>Place</th>
                         </tr>
-                    ))}
-                </table>
+                        {(this.props.data) && (this.props.data).map(value => (
+                            <tr key={value.id} onClick={() => this.props.modifyChosen(value)}>
+                                <td>{value.id}</td>
+                                <td>{value.station}</td>
+                                <td>{value.city}, {value.state}, {value.country}</td>
+                            </tr>
+                        ))}
+                    </table>
+                </div>
+                <div className="absolute top">
+                    <table>
+                        <tr>
+                            <th>Id</th>
+                            <th>Station</th>
+                        </tr>
+                        {(this.props.chosen) && (this.props.chosen).map(value => (
+                            <tr key={value.id}>
+                                <td>{value.id}</td>
+                                <td>{value.station}</td>
+                            </tr>
+                        ))}
+                    </table>
+                </div>
             </div>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    return {data: state.data};
+    return {data: state.data, chosen: state.chosen};
 };
 
 export default connect(mapStateToProps)(Search);

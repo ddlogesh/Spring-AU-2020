@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import Search from "./Search";
-import data from './api'
 
 class App extends Component {
     constructor(props) {
@@ -10,21 +9,25 @@ class App extends Component {
 
     modifyData = (value) => {
         this.props.dispatch({
-            type: 'CHANGE_DATA', data: data.filter((element) => {
-                return ((element.station).toLowerCase()).includes(value);
-            })
+            type: 'CHANGE_DATA', value: value
+        });
+    };
+
+    modifyChosen = (value) => {
+        this.props.dispatch({
+            type: 'CHANGE_CHOSEN', value: value
         });
     };
 
     render() {
         return (
-            <Search modifyData={this.modifyData}/>
+            <Search modifyData={this.modifyData} modifyChosen={this.modifyChosen}/>
         );
     }
 }
 
 const mapStateToProps = (state) => {
-    return {data: state.data};
+    return {data: state.data, chosen: state.chosen};
 };
 
 export default connect(mapStateToProps)(App);

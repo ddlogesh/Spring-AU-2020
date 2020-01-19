@@ -1,3 +1,5 @@
+package sax;
+
 import org.xml.sax.SAXException;
 
 import javax.xml.parsers.ParserConfigurationException;
@@ -13,7 +15,7 @@ public class Main {
         try {
             SAXParser saxParser = saxParserFactory.newSAXParser();
             MyHandler handler = new MyHandler();
-            saxParser.parse(new File("data_file.xml"), handler);
+            saxParser.parse(new File("sax/data_file.xml"), handler);
 
             Channel channel = handler.getChannel();
             System.out.println(channel);

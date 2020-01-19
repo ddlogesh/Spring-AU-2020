@@ -1,6 +1,8 @@
 package mysql;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Main {
     public static void main(String[] args) {
@@ -13,9 +15,19 @@ public class Main {
 
             ResultSet rs = stmt.executeQuery();
 
+            List<Employee> empList = new ArrayList<>();
             System.out.println("Id\tName\tDept\tDname");
-            while (rs.next())
-                System.out.println(rs.getInt(1) + "\t" + rs.getString(2) + "\t" + rs.getString(3) + "\t\t" + rs.getString(5));
+            while (rs.next()) {
+                Employee emp = new Employee();
+                emp.setId(rs.getInt(1));
+                emp.setName(rs.getString(2));
+                emp.setDept(rs.getInt(3));
+                emp.setDid(rs.getInt(4));
+                emp.setDname(rs.getString(5));
+                empList.add(emp);
+
+                System.out.println(emp);
+            }
             con.close();
         }
         catch (Exception e) {

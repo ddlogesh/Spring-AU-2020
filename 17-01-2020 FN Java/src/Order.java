@@ -4,6 +4,14 @@ public class Order {
     int id;
     String name;
     List<Product> productList;
+    Double total;
+
+    public Order(int id, String name, List<Product> productList, Double total) {
+        this.id = id;
+        this.name = name;
+        this.productList = productList;
+        this.total = total;
+    }
 
     public int getId() {
         return id;
@@ -27,5 +35,13 @@ public class Order {
 
     public void setProductList(List<Product> productList) {
         this.productList = productList;
+    }
+
+    public Double getTotal() {
+        return total;
+    }
+
+    public void setTotal(Double total) {
+        this.total = total;
     }
 }

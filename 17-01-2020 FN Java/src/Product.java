@@ -2,9 +2,9 @@ public class Product {
     int id;
     String name;
     int quantity;
-    double rate;
+    Double rate;
 
-    public Product(int id, String name, int quantity, double rate) {
+    public Product(int id, String name, int quantity, Double rate) {
         this.id = id;
         this.name = name;
         this.quantity = quantity;
@@ -45,11 +45,11 @@ public class Product {
         this.quantity = quantity;
     }
 
-    public double getRate() {
+    public Double getRate() {
         return rate;
     }
 
-    public void setRate(double rate) {
+    public void setRate(Double rate) {
         this.rate = rate;
     }
 }

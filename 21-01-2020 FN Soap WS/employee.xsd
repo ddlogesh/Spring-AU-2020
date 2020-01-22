@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<schema xmlns="http://www.w3.org/2001/XMLSchema"
+	targetNamespace="http://logesh.com/Employee"
+	xmlns:tns="http://logesh.com/Employee"
+	elementFormDefault="qualified">
+
+	<element name="employee" type="tns:employee" />
+
+	<complexType name="employee">
+		<sequence>
+			<element name="name" type="tns:String25Chars"/>
+			<element name="address" type="tns:address" />			
+			<element name="payment" type="tns:PaymentType" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="address">
+		<sequence>
+			<element name="name" type="string" />
+			<element name="pincode" type="tns:pincode" />
+		</sequence>
+	</complexType>
+	
+	<complexType name="PaymentType">
+		<choice>
+			<element name="debit" type="tns:card" />
+			<element name="credit" type="tns:card" />
+			<element name="cheque" type="string" />
+		</choice>
+	</complexType>
+	
+	<simpleType name="String25Chars">
+		<restriction base="string">
+			<maxLength value="25" />
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="pincode">
+		<restriction base="string">
+			<length value="7" />
+		</restriction>
+	</simpleType>
+	
+	<simpleType name="card">
+		<restriction base="string">
+			<length value="16" />
+		</restriction>
+	</simpleType>
+
+</schema>

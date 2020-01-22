@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE employee>
+<employee xmlns:tns="http://logesh.com/Employee" tns:employee="http://logesh.com/Employee" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://logesh.com/Employee employee.xsd ">
+  <name>logesh</name>
+  <address>
+    <name>chennai</name>
+    <pincode>6000077</pincode>
+  </address>
+  <payment>
+    <debit>1212121233221122</debit>
+  </payment>
+</employee>

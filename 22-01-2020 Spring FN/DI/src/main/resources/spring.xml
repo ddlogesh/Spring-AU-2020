@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-3.1.xsd">
+           
+           <bean id="point1" class="model.Point" scope="prototype">
+           		<!-- <property name="x" value="10"></property>
+           		<property name="y" value="20"></property> -->
+           		
+           		<!-- <constructor-arg value="5" index="0"></constructor-arg>
+           		<constructor-arg value="27" index="1"></constructor-arg> -->
+           		
+           		<constructor-arg value="5" type="int"></constructor-arg>
+           		<constructor-arg value="27" type="int"></constructor-arg>
+           </bean>
+           
+           <bean id="point2" class="model.Point">
+           		<constructor-arg value="15" type="int"></constructor-arg>
+           		<constructor-arg value="22" type="int"></constructor-arg>
+       		</bean>
+      		
+      		<bean id="point3" class="model.Point">
+           		<constructor-arg value="13" type="int"></constructor-arg>
+           		<constructor-arg value="29" type="int"></constructor-arg>
+       		</bean>
+       		
+       		<bean id="triangle" class="model.Triangle">
+           		<constructor-arg name="p1" ref="point1"></constructor-arg>
+           		<constructor-arg name="p2" ref="point2"></constructor-arg>
+           		<constructor-arg name="p3" ref="point3"></constructor-arg>
+       		</bean>
+       		
+       		<bean id="trianglelist" class="model.TriangleList">
+           		<constructor-arg>
+           		<list>
+           			<ref bean="point1" />
+			    	<ref bean="point2" />
+			    	<ref bean="point3" />
+			    	</list>
+           		</constructor-arg>
+       		</bean>
+       		
+       		<bean id="trianglemap" class="model.TriangleMap">
+           		<constructor-arg>
+	           		<map>
+	           			<entry key="1" value-ref="point1" />
+	           			<entry key="2" value-ref="point2" />
+	           			<entry key="3" value-ref="point3" />
+			    	</map>
+           		</constructor-arg>
+       		</bean>
+</beans>

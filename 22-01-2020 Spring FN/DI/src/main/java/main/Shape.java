@@ -5,10 +5,10 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import config.AppConfig;
-import model.Point;
+//import model.Point;
 import model.Triangle;
-import model.TriangleList;
-import model.TriangleMap;
+//import model.TriangleList;
+//import model.TriangleMap;
 import service.ExternalService;
 
 public class Shape {
@@ -19,7 +19,7 @@ public class Shape {
 //		
 //		point.draw();
 		
-		//ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
+		ApplicationContext context = new ClassPathXmlApplicationContext("spring.xml");
 		//Point point = (Point) context.getBean("point");
 		//System.out.print(point);
 		
@@ -32,11 +32,11 @@ public class Shape {
 //		TriangleMap triangleMap= (TriangleMap) context.getBean("trianglemap");
 //		System.out.print(triangleMap);
 		
-		ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
+		//ApplicationContext context = new AnnotationConfigApplicationContext(AppConfig.class);
 		//Triangle triangle = (Triangle) context.getBean("triangle");
 		//System.out.print(triangle);
 		
-		ExternalService externalService = context.getBean(ExternalService.class);
+		ExternalService externalService = (ExternalService) context.getBean(ExternalService.class);
 	    externalService.printTriangle();
 	}
 }

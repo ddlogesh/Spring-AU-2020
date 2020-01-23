@@ -1,17 +1,19 @@
 package config;
 
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.context.annotation.Scope;
+//import org.springframework.context.annotation.Scope;
 
 import model.Point;
 import model.Triangle;
 
 @Configuration
+@ComponentScan("service")
 public class AppConfig {
 
+	//@Scope("prototype")
 	@Bean(name="triangle")
-	@Scope("prototype")
 	public Triangle getTriangle() {
 		Triangle triangle = new Triangle();
 		Point p1 = getPoint1();

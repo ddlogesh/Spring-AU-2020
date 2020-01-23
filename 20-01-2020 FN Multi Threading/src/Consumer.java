@@ -1,5 +1,4 @@
 public class Consumer implements Runnable {
-    String[] fruits = {"apple", "orange", "grape", "watermelon"};
     int index;
 
     public Consumer(int i) {
@@ -10,24 +9,27 @@ public class Consumer implements Runnable {
     public void run() {
         String name = Thread.currentThread().getName();
         System.out.println(name + " started...");
+
         while (true) {
             synchronized (Main.inventory) {
-                int value = Main.inventory.get(fruits[index]);
+                int value = Main.inventory.get(Main.fruits[index]);
                 if (value-- > 0) {
-                    System.out.println(name + " removed: " + Main.inventory.put(fruits[index], value));
+                    Main.inventory.put(Main.fruits[index], value);
+                    System.out.println("\t\t\t\t\t\t\t\t\t\t\t\t\t\t" + name + " consumed 1 " +  Main.fruits[index]);
+                    Main.getInfo();
                     Main.inventory.notifyAll();
+
                     try {
                         Thread.sleep(1000);
                     } catch (Exception e) {
-                        e.printStackTrace();
+                        System.err.println(name + " " + e.getMessage());
                     }
-                } else {
-                    try {
-                        Main.inventory.wait();
-                    } catch (Exception e) {
-                        e.printStackTrace();
-                    }
-                    System.out.println(name + " notified!");
+                }
+
+                try {
+                    Main.inventory.wait();
+                } catch (Exception e) {
+                    System.err.println(name + " " + e.getMessage());
                 }
             }
         }

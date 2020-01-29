@@ -1,10 +1,4 @@
-<%@ page import="java.sql.*" %>
 <%@ page errorPage="error.jsp" %>
-<%@ page import="java.io.*" %>
-<%@ page import="java.util.*"%>
-<%@ page import="config.*" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="obj" class="config.DBConfig" scope="application"/> 
 <html>
 <head>
 <title>Update Employee</title>
@@ -43,25 +37,8 @@ li a:hover:not(.active) {
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-
-<%
-if(request.getParameter("id") != null){
-	int id = Integer.parseInt(request.getParameter("id"));
-	String fname = request.getParameter("fname");
-	
-	Connection connection = obj.getConnection();
-	Statement statement = connection.createStatement();
-
-	String sql = "UPDATE employee set fname='"+ fname +"' where id='" + id + "'";
-	if(statement.executeUpdate(sql) > 0)
-		out.println("<script>swal({title: 'Success',text: 'Successfully updated!',icon: 'success',dangerMode: true,}).then((willDelete) => {window.location.href = '/mvc/';})</script>");
-	else
-		throw new Exception("Update failure");
-}
-%>
-
 <ul>
-  <li><a href="/mvc/">Home</a></li>
+  <li><a href="home">Home</a></li>
   <li><a href="create">Create</a></li>
   <li><a class="active" href="#">Update</a></li>
   <li><a href="delete">Delete</a></li>

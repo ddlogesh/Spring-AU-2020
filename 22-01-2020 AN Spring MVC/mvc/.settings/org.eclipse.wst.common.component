@@ -5,8 +5,7 @@
         <wb-resource deploy-path="/" source-path="/WebContent" tag="defaultRootSource"/>
         <wb-resource deploy-path="/" source-path="/target/m2e-wtp/web-resources"/>
         <wb-resource deploy-path="/" source-path="/src/main/webapp"/>
-        <wb-resource deploy-path="/" source-path="/src/main/webapp/WEB-INF/views"/>
+        <property name="java-output-path" value="/mvc/target/classes"/>
         <property name="context-root" value="mvc"/>
-        <property name="java-output-path" value="/ddlogesh/target/classes"/>
     </wb-module>
 </project-modules>

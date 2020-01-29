@@ -1,10 +1,4 @@
-<%@ page import="java.sql.*" %>
-<%@ page errorPage="error.jsp" %>  
-<%@ page import="java.io.*" %>
-<%@ page import="java.util.*"%>
-<%@ page import="config.*" %>
-<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
-<jsp:useBean id="obj" class="config.DBConfig" scope="application"/> 
+<%@ page errorPage="error.jsp" %>
 <html>
 <head>
 <title>Create Employee</title>
@@ -43,24 +37,8 @@ li a:hover:not(.active) {
 <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 </head>
 <body>
-<%
-	if(request.getParameter("id") != null){
-		int id = Integer.parseInt(request.getParameter("id"));
-		String fname = request.getParameter("fname");
-		String lname = request.getParameter("lname");
-		String mobile = request.getParameter("mobile");
-		
-		Connection connection = obj.getConnection();
-		Statement statement = connection.createStatement();
-	
-		String sql = "INSERT INTO employee VALUES(" + id + ",'" + fname + "','" + lname + "','" + mobile + "')";
-		statement.executeUpdate(sql);
-		out.println("<script>swal({title: 'Success',text: 'Successfully inserted!',icon: 'success',dangerMode: true,}).then((willDelete) => {window.location.href = '/mvc/';})</script>");
-	}
-%>
-
 	<ul>
-	  <li><a href="/mvc/">Home</a></li>
+	  <li><a href="home">Home</a></li>
 	  <li><a class="active" href="#">Create</a></li>
 	  <li><a href="update">Update</a></li>
 	  <li><a href="delete">Delete</a></li>

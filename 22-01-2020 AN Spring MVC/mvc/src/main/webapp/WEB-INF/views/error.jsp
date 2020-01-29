@@ -38,14 +38,14 @@ li a:hover:not(.active) {
 <body>
 <div>
 <ul>
-  <li><a class="active" href="/mvc/">Home</a></li>
+  <li><a class="active" href="home">Home</a></li>
   <li><a href="create">Create</a></li>
   <li><a href="update">Update</a></li>
   <li><a href="delete">Delete</a></li>
 </ul>
 <br>
 <h1>Exception occurred!</h1>
-<p><%= exception %><p>
+<p> ${error} </p>
 </div>
 </body>
 </html>
